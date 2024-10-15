@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .login-container a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username">
+        <span class="error-message" id="usernameError">Username is required</span>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+        <span class="error-message" id="passwordError">Password is required</span>
+
+        <input type="submit" value="Login">
+        <a href="#">Forgot Password?</a>
+    </form>
+</div>
+
+<script>
+    // JavaScript for form validation
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        // Prevent form submission
+        event.preventDefault();
+
+        // Get form values
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+
+        // Error message elements
+        let usernameError = document.getElementById('usernameError');
+        let passwordError = document.getElementById('passwordError');
+
+        // Reset error messages
+        usernameError.style.display = 'none';
+        passwordError.style.display = 'none';
+
+        let valid = true;
+
+        // Validate username
+        if (username.trim() === "") {
+            usernameError.style.display = 'block';
+            valid = false;
+        }
+
+        // Validate password
+        if (password.trim() === "") {
+            passwordError.style.display = 'block';
+            valid = false;
+        }
+
+        // If valid, allow form submission
+        if (valid) {
+            alert("Form submitted successfully!");
+            // Optionally, you can submit the form using:
+            // this.submit();
+        }
+    });
+</script>
+
+</body>
+</html>
+
